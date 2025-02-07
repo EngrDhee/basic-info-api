@@ -1,77 +1,93 @@
 # Public API for Basic Information
 
-This is a FastAPI-based public API that returns basic information in JSON format, including a registered email address, the current UTC datetime in ISO 8601 format, and a link to the GitHub repository.
+This is a FastAPI-based public API that provides basic information in JSON format. It includes a registered email address, the current Nigeria datetime in ISO 8601 format, and a link to the GitHub repository.
 
 ## Features
 
-* Returns a registered email address
-* Provides the current datetime dynamically in ISO 8601 format
-* Includes a link to the GitHub repository
-* Supports Cross-Origin Resource Sharing (CORS)
+- Returns a registered email address
+- Provides the current Nigeria datetime dynamically in ISO 8601 format
+- Includes a link to the GitHub repository
+- Supports Cross-Origin Resource Sharing (CORS)
 
 ## Installation & Setup
 
 ### Prerequisites
 
-* Python 3.8+
-* pip (Python package manager)
+- Python 3.8+
+- pip (Python package manager)
 
 ### Installation Steps
 
 1. **Clone this repository:**
 
    ```bash
-   git clone [https://github.com/EngrDhee/basic-info-api.git](https://github.com/EngrDhee/basic-info-api.git)
+   git clone https://github.com/EngrDhee/basic-info-api.git
    cd basic-info-api
-Create and activate a virtual environment:
+   ```
 
-Bash
+2. **Create and activate a virtual environment:**
 
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-Install dependencies:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   ```
 
-Bash
+3. **Install dependencies:**
 
-pip install -r requirements.txt
-Run the API:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Bash
+4. **Run the API locally:**
 
-uvicorn main:app --reload
-API Documentation
-Endpoint: GET /
+   ```bash
+   uvicorn info_api:app --reload
+   ```
 
-Response Format (200 OK)
+## API Documentation
 
-JSON
+### Endpoint: `GET /`
 
+#### Response Format (200 OK)
+
+```json
 {
     "registered_email": "talk2dayoabdul@yahoo.com",
-    "current_datetime": "2025-02-06T12:34:56.789Z",
-    "github_url": "[https://github.com/EngrDhee/basic-info-api](https://github.com/EngrDhee/basic-info-api)"
+    "current_datetime": "2025-02-06T12:34:56.789+01:00",
+    "github_url": "https://github.com/EngrDhee/basic-info-api"
 }
-Deployment
-Deploying on Railway
-Go to Railway.app and sign up using GitHub.
+```
 
-Click "New Project" → Select "Deploy from GitHub Repo".
+## Deployment
 
-Choose your repository and let Railway detect the environment.
+### Deploying on Railway
 
-Add a Procfile with the following content:
+1. Go to [Railway.app](https://railway.app) and sign up using GitHub.
+2. Click **"New Project"** → Select **"Deploy from GitHub Repo"**.
+3. Choose your repository and let Railway detect the environment.
+4. Add a `Procfile` with the following content:
 
-web: uvicorn info_api:app --host 0.0.0.0 --port $PORT
-Click "Deploy" and wait for completion.
+   ```plaintext
+   web: uvicorn main:app --host 0.0.0.0 --port $PORT
+   ```
 
-Once deployed, Railway will provide a public URL like:
+5. Click **"Deploy"** and wait for completion.
+6. Once deployed, Railway will provide a public URL like:
 
-https://your-app-name.up.railway.app/
+   ```
+   https://engrdhee-infoapi.up.railway.app/
+   ```
 
-Test your API using:
+### Testing the API
 
-Bash
+You can test the API using `curl`:
 
-curl [https://your-app-name.up.railway.app/](https://your-app-name.up.railway.app/)
-License
+```bash
+curl https://engrdhee-infoapi.up.railway.app/
+```
+
+Or use a browser or tools like Postman to verify the response.
+
+## License
+
 This project is licensed under the MIT License.
